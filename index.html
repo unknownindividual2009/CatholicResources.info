@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catholic Resources - Church Fathers</title>
+<link rel="shortcut icon" href="Red_Chi_Rho_sign.png" type="image/x-icon">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .church-fathers-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .church-fathers-list li {
+      margin: 10px 0;
+    }
+    .church-fathers-list a,
+    a,
+    .church-fathers-list p, h3, h2 {
+      text-decoration: none;
+      color: #0056b3;
+    }
+    .church-fathers-list a:hover {
+      text-decoration: underline;
+    }
+    h3 {
+      color: saddlebrown
+    }
+  </style>
+</head>
+<body>
+  <h1>Church Fathers</h1>
+  <ul class="church-fathers-list" id="churchFathersList"></ul>
+  <li><a href="hymns.html">Blessed Hymns</a></li>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const churchFathers = [
+        {
+          name: "Saint Augustine of Hippo",
+          resources: [
+            { type: "epub", name: "The Blessed Confessions of Saint Augustine of Hippo", book: "The Confessions" },
+            { type: "pdf", name: "The Blessed Confessions of Saint Augustine of Hippo" },
+            { type: "epub", name: "The Blessed Letters of Saint Augustine of Hippo", book: "The Letters" },
+            { type: "pdf", name: "The Blessed Letters of Saint Augustine of Hippo"}
+
+          ],
+        },
+      ];
+
+      const churchFathersList = document.getElementById("churchFathersList");
+
+      churchFathers.forEach((father) => {
+        const listItem = document.createElement("li");
+        let resourcesHtml = "";
+
+        father.resources.forEach((resource) => {
+          if (resource.type == "epub") {
+          resourcesHtml += `
+            <h3>${resource.book}</h3>
+            <li><a href="bibi/index.html?book=../ChurchFathers/${father.name}/${resource.name}.${resource.type}" target="_blank">${resource.name} [${resource.type.toUpperCase()}]</a></li>
+          `;} else {
+            resourcesHtml += `
+            <li><a href="ChurchFathers/${father.name}/${resource.name}.${resource.type}" target="_blank">${resource.name} [${resource.type.toUpperCase()}]</a></li>
+          `;
+          }
+        });
+
+        listItem.innerHTML = `
+          <h2>${father.name}</h2>
+          <ul>
+            ${resourcesHtml}
+          </ul>
+        `;
+        churchFathersList.appendChild(listItem);
+      });
+    });
+  </script>
+</body>
+</html>
