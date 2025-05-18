@@ -58,8 +58,8 @@
             { type: "pdf", name: "On Order by the Blessed Saint Augustine of Hippo"},
             { type: "epub", name: "The Soliloquies by Saint Augustine of Hippo", book: "The Soliloquies" },
             { type: "pdf", name: "The Soliloquies by Saint Augustine of Hippo"},
-            { type: "epub", name: "The Immorality of the Soul, The Magnitude of the Soul, On Music, The Advantage of Believing, On Faith in Things Unseen by Saint Augustine of Hippo", book: "The Immorality of the Soul, The Magnitude of the Soul, On Music, The Advantage of Believing, On Faith in Things Unseen" },
-            { type: "pdf", name: "The Immorality of the Soul, The Magnitude of the Soul, On Music, The Advantage of Believing, On Faith in Things Unseen by Saint Augustine of Hippo"},
+            { type: "epub", name: "The Immortality of the Soul, The Magnitude of the Soul, On Music, The Advantage of Believing, On Faith in Things Unseen by Saint Augustine of Hippo", book: "The Immorality of the Soul, The Magnitude of the Soul, On Music, The Advantage of Believing, On Faith in Things Unseen" },
+            { type: "pdf", name: "The Immortality of the Soul, The Magnitude of the Soul, On Music, The Advantage of Believing, On Faith in Things Unseen by Saint Augustine of Hippo"},
             { type: "epub", name: "The City of God By Saint Augustine of Hippo", book: "The City of God" },
             { type: "pdf", name: "The City of God By Saint Augustine of Hippo"},
             { type: "epub", name: "On The Teacher, The Free Choice of the Will, Grace and Free Will by the Blessed Saint Augustine of Hippo", book: "On The Teacher, The Free Choice of the Will, Grace and Free Will" },
@@ -74,6 +74,10 @@
         const listItem = document.createElement("li");
         let resourcesHtml = "";
 
+        if (father.name  == "Saint Augustine of Hippo") {
+          resourcesHtml += '<h4><a href="Apologies.html">A Note about the [EPUB] Versions</a><h4/>'
+        }
+
         father.resources.forEach((resource) => {
           if (resource.type == "epub") {
           resourcesHtml += `
@@ -85,6 +89,8 @@
           `;
           }
         });
+
+  
 
         listItem.innerHTML = `
           <h2>${father.name}</h2>
